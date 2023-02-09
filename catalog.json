@@ -1,0 +1,20 @@
+{
+    "charts": {
+        "centos": {
+            "app_readme": "this is an app readme.",
+            "categories": [
+                "tools"
+            ],
+            "description": "Centos offical docker images",
+            "healthy": true,
+            "healthy_error": null,
+            "location": "/__w/charts/charts/charts/centos",
+            "latest_version": "1.0.0",
+            "latest_app_version": "1.0.0",
+            "latest_human_version": "1.0.0",
+            "name": "centos",
+            "title": "Centos",
+            "icon_url": "https://seeklogo.com/images/C/centos-logo-494F57D973-seeklogo.com.png"
+        }
+    }
+}

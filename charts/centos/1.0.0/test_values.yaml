@@ -1,0 +1,6 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.begincloud.cn/centos
+  tag: latest
+useServiceNameForHost: true
+ixChartContext: {}

@@ -1,0 +1,75 @@
+groups:
+  - name: "Container Images"
+    description: "Image to be used for container"
+  - name: "Advanced DNS Settings"
+    description: "Configure DNS settings"
+
+portals:
+  web_portal:
+    protocols:
+      - "$kubernetes-resource_configmap_nginx-configuration_protocol"
+    host:
+      - "$variable-nginx.host"
+    ports:
+      - "$variable-nginx.port"
+
+questions:
+
+  - variable: dnsConfig
+    label: "DNS Configuration"
+    group: "Advanced DNS Settings"
+    schema:
+      type: dict
+      attrs:
+        - variable: options
+          label: "DNS Options"
+          schema:
+            type: list
+            items:
+              - variable: optionsEntry
+                label: "option Entry Configuration"
+                schema:
+                  type: dict
+                  attrs:
+                    - variable: name
+                      label: "Option Name"
+                      schema:
+                        type: string
+                        required: true
+                    - variable: value
+                      label: "Option Value"
+                      schema:
+                        type: string
+                        required: true
+
+  - variable: certificate
+    description: "Configure Certificate for Nginx"
+    label: "Certificate Configuration"
+    group: "Nginx Configuration"
+    schema:
+      type: int
+      $ref:
+        - "definitions/certificate"
+
+  - variable: nginx
+    description: "Nginx configuration details"
+    label: "Nginx Configuration"
+    group: "Nginx Configuration"
+    schema:
+      type: dict
+      required: true
+      additional_attrs: true
+      attrs:
+        - variable: host
+          description: "Nginx host to create application URLs"
+          label: "Nginx host"
+          schema:
+            type: string
+            $ref:
+              - "definitions/nodeIP"
+        - variable: port
+          label: "Node Port to use for Nginx"
+          schema:
+            type: int
+            default: 8080
+            required: true
